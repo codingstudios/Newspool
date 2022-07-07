@@ -1,0 +1,91 @@
+/* 
+   Hand Coded By Chee Yong Lee (https://github.com/leecheeyong)
+   Copyright (c) 2022 Newspool 
+*/
+
+body {
+    color: white;
+    background-color: rgb(37, 37, 37);
+    font-family: 'Roboto', sans-serif;
+    overflow: hidden;
+}
+
+header {
+    font-size: 1.75em;
+    margin: 2em;
+    margin-bottom: 1em;
+}
+
+header > h1, header > p {
+    margin: 0;
+    margin-bottom: 0.1em;
+}
+
+header > h2 {
+    font-size: 1em;
+}
+
+p {
+    font-size: 0.4em;
+    color:rgb(145, 145, 145)
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+}
+
+.all {
+    max-height: 75vh;
+    border-radius: 10px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 95%;
+}
+
+.news {
+    border: 2px solid white;
+    margin-left: 4em;
+    margin-top: 15px;
+    border-radius: 10px;
+    padding: 1rem;
+    cursor: pointer;
+    padding-left: 2em;
+    padding-right: 2em;
+    transition: all .5s linear;
+}
+
+span {
+    cursor: pointer;
+}
+
+.news > p {
+    display: none;
+    font-size: 1em;
+}
+
+.news:hover > p {
+    display: block;
+}
+
+.news:hover > h2 {
+    display: none;
+}
+
+.page {
+    font-size: 20px;
+    text-align: center;
+}
+
+.content {
+    padding-left: 3em;
+    overflow: auto;
+    max-height: 75vh;
+}
+
+.content > p {
+    text-align: center;
+    font-size: 1.8em;
+    margin-right: 3.5em;
+    line-height: 1.5;
+}
