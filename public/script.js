@@ -9,7 +9,7 @@ var version = new URLSearchParams(window.location.search).get("v");
 
 if(!pageNumber || !Number(pageNumber)) pageNumber = 1;
 if(!version || !Number(version)) version = 1;
-fetch(`/v${v}/articles?page=${pageNumber}`).then(res => res.json()).then(data => {
+fetch(`/v${version}/articles?page=${pageNumber}`).then(res => res.json()).then(data => {
     if(!Array.isArray(data.articles))return;
     loading.classList.add('hidden');
     setTimeout(() => {
@@ -37,12 +37,12 @@ fetch(`/v${v}/articles?page=${pageNumber}`).then(res => res.json()).then(data =>
 })
 document.getElementById("prev").onclick = () => {
     if(pageNumber == 1)return;
-    window.location.search = `?page=${pageNumber = 0 ? pageNumber : Number(pageNumber)-1}`;
+    window.location.search = `?page=${pageNumber = 0 ? pageNumber : Number(pageNumber)-1}${version > 1 ? `&v=${version}` : ''}`;
 }
 
 document.getElementById("next").onclick = () => {
     if(totalPages == 0 || Number(pageNumber)+1 > totalPages)return;
-    window.location.search = `?page=${Number(pageNumber)+1}`;
+    window.location.search = `?page=${Number(pageNumber)+1}${version > 1 ? `&v=${version}` : ''}`;
 }
 }
 
