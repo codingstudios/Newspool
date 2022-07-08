@@ -14,4 +14,4 @@ A unique news application created by the Coding Studios.
 - [@w3cy](https://github.com/w3cy)
 
 ## Credit
-> Please credit this repository and the authors if you plan to use this project 
+> Please credit this repository and the authors if you plan to use the codes in this project
