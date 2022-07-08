@@ -10,6 +10,8 @@ A unique news application written in javascript created by the Coding Studios.
 - **User Friendly** - Easy on every browser (well optimized frontend javascript)
 
 ## Endpoints
+- `/` - **NewsPool** - News
+  - `/article/{id}` - View article by ID
 - `/v1` - **NewsAPI** - Get all news
   - `/v1/articles?page={pageNumber}` - Articles (Grouped into 10)
   - `/v1/article/{id}` - Get an article content by ID
