@@ -1,5 +1,6 @@
 var totalPages = 0;
 const DOM = document.getElementById("articles");
+const loading = document.getElementById("loading");
 
 document.onload = update();
 function update() {
@@ -7,6 +8,9 @@ var pageNumber = new URLSearchParams(window.location.search).get("page");
 if(!pageNumber || !Number(pageNumber)) pageNumber = 1;
 fetch(`/v1/articles?page=${pageNumber}`).then(res => res.json()).then(data => {
     if(!Array.isArray(data.articles))return;
+    loading.classList.add('hidden');
+    setTimeout(() => {
+    DOM.textContent = ``;
     totalPages = data.totalPages;
     data.articles.forEach(article => {
         const element = document.createElement("div");
@@ -26,6 +30,7 @@ fetch(`/v1/articles?page=${pageNumber}`).then(res => res.json()).then(data => {
     currentPage.classList.add("page");
     currentPage.textContent = `Page ${pageNumber} of ${totalPages}`;
     document.body.append(currentPage);
+}, 500);
 })
 document.getElementById("prev").onclick = () => {
     if(pageNumber == 1)return;
