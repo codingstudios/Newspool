@@ -13,6 +13,10 @@ const cache = require('./cache.js');
 
 const baseURL = '';
 
+const regex = (content) => {
+  return content.replace(/\s+/g, " ").replace(/(<([^>]+)>)/gi, "")
+};
+    
 const contentFilter = (link, contentData) => {
     try {
     let dom = new JSDOM(contentData, {
@@ -21,7 +25,7 @@ const contentFilter = (link, contentData) => {
     let article = new Readability(dom.window.document).parse();
     const DOMPurify = createDOMPurify(new JSDOM('').window);
     const finalContent = DOMPurify.sanitize(article.textContent);
-    return `${finalContent.replace(/\s+/g, " ").replace(/(<([^>]+)>)/gi, "")}`;
+    return `${regex(finalContent)}`;
   }catch(e) {}
   }
   
@@ -33,18 +37,17 @@ const contentFilter = (link, contentData) => {
       var content = (await axios.get(getURL({ category: 'everything', query: queries[URL] }))).data;
       var data = content["articles"]
       for(i in data) {
-        if(!english.test(data[i]?.title?.split(" ").join("-"))) {
         cache.set(`${data[i]?.title?.split(" ").join("-")}`, `${data[i].url}`);
         data[i] = {
           ...data[i],
           source: undefined,
-          description: undefined,
           content: undefined,
           author: undefined,
           urlToImage: undefined,
+          url: `/article/${data[i]?.title?.split(" ").join("-")}`,
           link: `${baseURL}/article/${data[i]?.title?.split(" ").join("-")}`
       }
-    }
+      data[i].description = regex(data[i].description);
       }
     allData = allData.concat(data);
 
@@ -68,12 +71,10 @@ const contentFilter = (link, contentData) => {
     var data = cache.get(id);
     if(!data)return undefined;
     if(data.startsWith('https://')){
-      if(!english.test(id)) {
         const content = await axios.get(`${data}`);
         const articleContent = contentFilter(data, content.data);
         cache.set(`${id}`, `${articleContent}`);
         return articleContent;
-      }
     }else {
       return data;
     }
