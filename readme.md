@@ -8,7 +8,7 @@ A unique news application written in javascript created by the Coding Studios.
 - **Stylish** - Perfectly Designed Frontend (animation, align, size, colors)
 - **Friendly** - Easy on every browser (well optimized frontend javascript)
 
-# [Showcase](./showcase)
+## [Showcase](./showcase)
 
 ## Datas & Contents are from
 - [newsapi.org](https://newsapi.org)
