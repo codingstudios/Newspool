@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, './public')));
 
 app.get('/article/:id', async (req, res) => {
     try {
-    const article = await getArticle(req.params.id);
+    const article = await getArticle(req.url.slice(9));
     if(!article) return res.render('content', {
         title: "404 Not Found"
     })
