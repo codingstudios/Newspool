@@ -9,7 +9,7 @@ const createDOMPurify = require('dompurify');
 
 const TOPICS_RSS    = 'https://news.google.com/news/rss/headlines/section/topic/';
 const SEARCH_RSS    = 'https://news.google.com/rss/search?q=';
-const TOPICS = ['TECHNOLOGY', 'ENTERTAINMENT', 'SPORTS', 'SCIENCE'];
+const TOPICS = [];
 const URL = ``;
 
 const contentFilter = (link, contentData) => {
