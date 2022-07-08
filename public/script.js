@@ -5,8 +5,11 @@ const loading = document.getElementById("loading");
 document.onload = update();
 function update() {
 var pageNumber = new URLSearchParams(window.location.search).get("page");
+var version = new URLSearchParams(window.location.search).get("v");
+
 if(!pageNumber || !Number(pageNumber)) pageNumber = 1;
-fetch(`/v1/articles?page=${pageNumber}`).then(res => res.json()).then(data => {
+if(!version || !Number(version)) version = 1;
+fetch(`/v${v}/articles?page=${pageNumber}`).then(res => res.json()).then(data => {
     if(!Array.isArray(data.articles))return;
     loading.classList.add('hidden');
     setTimeout(() => {
