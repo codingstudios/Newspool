@@ -3,6 +3,7 @@ A unique news application written in javascript created by the Coding Studios.
 
 ## About
 - **Scraper** - Scrapes API content and filter the datas
+- **Cached** - Datas/Contents are cached, prevent rate limit
 - **Front-End (UX & UI)** - Frontend Ready, Designed by [@leecheeyong](https://github.com/leecheeyong)
 - **API** - API Ready
 - **Stylish** - Perfectly Designed Frontend (animation, align, size, colors)
