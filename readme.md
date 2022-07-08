@@ -1,4 +1,4 @@
-# NewsPool
+# { NewsPool }
 A unique news application written in javascript created by the Coding Studios.
 
 ## About
