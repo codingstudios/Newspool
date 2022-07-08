@@ -1,12 +1,17 @@
 # NewsPool
-A unique news application created by the Coding Studios.
+A unique news application written in javascript created by the Coding Studios.
 
 ## About
 - **Scraper** - Scrapes API content and filter the datas
 - **Front-End (UX & UI)** - Frontend Ready, Designed by [@leecheeyong](https://github.com/leecheeyong)
 - **API** - API Ready
-- **Stylish** - Perfectly Designed Frontend
+- **Stylish** - Perfectly Designed Frontend (animation, align, size, colors)
 - **Friendly** - Easy on every browser (well optimized frontend javascript)
+
+## Datas & Contents are from
+- [newsapi.org](https://newsapi.org)
+- [Google News](https://news.google.com)
+- Scraped Websites (any)
 
 ## Author
 - [@leecheeyong](https://github.com/leecheeyong)
