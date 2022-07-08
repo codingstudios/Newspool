@@ -9,6 +9,15 @@ A unique news application written in javascript created by the Coding Studios.
 - **Stylish** - Perfectly Designed Frontend (animation, align, size, colors)
 - **User Friendly** - Easy on every browser (well optimized frontend javascript)
 
+## Endpoints
+- `/v1` - **NewsAPI** - Get all news
+  - `/v1/articles?page={pageNumber}` - Articles (Grouped into 10)
+  - `/v1/article/{id}` - Get an article content by ID
+- `/v2` - **Google News** - Get all news
+  - `/topic` - Get news by topic
+  - `/articles` - Articles (Grouped into 10)
+  - `/article/{id}` - Get an article content by ID
+
 ## [Showcase](./showcase)
 
 ## Datas & Contents are from
