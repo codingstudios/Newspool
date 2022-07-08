@@ -36,9 +36,10 @@ a {
 }
 
 .all {
-    max-height: 75vh;
+    max-height: 74vh;
     border-radius: 10px;
     overflow: auto;
+    text-align: center;
     display: grid;
     grid-template-columns: 95%;
 }
@@ -88,4 +89,35 @@ span {
     font-size: 1.8em;
     margin-right: 3.5em;
     line-height: 1.5;
+}
+  
+#loading > h1 {
+    font-size: 10rem;
+    display: inline-block;
+}
+
+.left {
+    animation: left 1.5s infinite ease-in-out;
+}
+
+
+.right {
+    animation: right 1.5s infinite ease-in-out;
+}
+
+.hidden {
+    opacity: 0;
+    transition: visibility 0s 0.5s, opacity 0.5s linear;
+}
+
+@keyframes left {
+    25% {transform: scale(0.5)}
+    50% {transform: translateX(-30px)}
+    75% {transform: scale(1)}
+}
+
+@keyframes right {
+    25% {transform: scale(0.5)}
+    50% {transform: translateX(30px) }
+    75% {transform: scale(1)}
 }
