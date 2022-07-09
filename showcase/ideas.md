@@ -1,8 +1,12 @@
-## Ideas that will be implemented soon
+# Ideas
+Ideas for this project, feel free to create an issue to suggest any features.
+Ideas that will not be implemented may have a solution for it !
+
+## Features/Ideas that will be implemented soon
 - Well Documented Setup Process (Reason: No time for that, sorry)
 - Search for topics, titles (In queue)
 
-## Ideas that will not be implemented 
+## Features that will not be implemented 
 - Voice Over - Text to Speech (Reason: May not work on some browsers)
   - You can actually add the function by yourself:
     ```js
