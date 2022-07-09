@@ -13,7 +13,7 @@ body {
 header {
     font-size: 1.75em;
     margin: 2em;
-    margin-bottom: 1em;
+    margin-bottom: 0.8em;
 }
 
 header > h1, header > p {
@@ -23,6 +23,8 @@ header > h1, header > p {
 
 header > h2 {
     font-size: 1em;
+    max-width: 85%;
+    line-height: 1.2em;
 }
 
 p {
@@ -81,13 +83,13 @@ span {
 .content {
     padding-left: 3em;
     overflow: auto;
-    max-height: 75vh;
+    max-height: 70vh;
 }
 
 .content > p {
     text-align: center;
     font-size: 1.8em;
-    margin-right: 3.5em;
+    margin-right: 2.5em;
     line-height: 1.5;
 }
   
@@ -107,7 +109,7 @@ span {
 
 .hidden {
     opacity: 0;
-    transition: visibility 0s 0.5s, opacity 0.5s linear;
+    transition: visibility 0s 0.3s, opacity 0.3s linear;
 }
 
 @keyframes left {
