@@ -1,6 +1,5 @@
 # Ideas
-Ideas for this project, feel free to create an issue to suggest any features.
-Ideas that will not be implemented may have a solution for it !
+*Ideas for this project, feel free to create an issue to suggest any features. Ideas that will not be implemented may have a solution for it !*
 
 ## Features/Ideas that will be implemented soon
 - Well Documented Setup Process (Reason: No time for that, sorry)
