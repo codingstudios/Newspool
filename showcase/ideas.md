@@ -5,9 +5,9 @@
 ## Ideas that will not be implemented 
 - Voice Over - Text to Speech (Reason: May not work on some browsers)
   - You can actually add the function by yourself:
-```js
+    ```js
 speechSynthesis.speak(
   new SpeechSynthesisUtterance(text.replace(/\s/g, " "))
 )
-```
+    ```
     
