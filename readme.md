@@ -1,7 +1,7 @@
 # { NewsPool }
 A unique news application written in javascript created by the Coding Studios.
 
-**View [Demo](https://newspool.js.org)**
+**View [Live Demo](https://newspool.js.org)**
 
 ## About
 - **Scraper** - Scrapes API content and filter the datas
