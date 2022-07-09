@@ -8,7 +8,7 @@ var pageNumber = new URLSearchParams(window.location.search).get("page");
 var version = new URLSearchParams(window.location.search).get("v");
 
 if(!pageNumber || !Number(pageNumber)) pageNumber = 1;
-if(!version || !Number(version)) version = 1;
+if(!version || !Number(version)) version = 2;
 fetch(`/v${version}/articles?page=${pageNumber}`).then(res => res.json()).then(data => {
     if(!Array.isArray(data.articles))return;
     loading.classList.add('hidden');
@@ -33,7 +33,7 @@ fetch(`/v${version}/articles?page=${pageNumber}`).then(res => res.json()).then(d
     currentPage.classList.add("page");
     currentPage.textContent = `Page ${pageNumber} of ${totalPages}`;
     document.body.append(currentPage);
-}, 500);
+}, 300);
 })
 document.getElementById("prev").onclick = () => {
     if(pageNumber == 1)return;
