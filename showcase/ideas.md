@@ -6,6 +6,7 @@
 - Voice Over - Text to Speech (Reason: May not work on some browsers)
   - You can actually add the function by yourself:
     ```js
+    // text is not defined, create an element picker, get the content and set the content as text
       speechSynthesis.speak(
         new SpeechSynthesisUtterance(text.replace(/\s/g, " "))
       )
