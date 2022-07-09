@@ -52,8 +52,11 @@ if(Array.isArray(CUSTOM_RSS) && CUSTOM_RSS.length > 0) {
     data[i] = {
       ...data[i],
       content: undefined,
+      description: data[i]?.contentSnippet ? data[i]?.contentSnippet?.replace('View Full coverage on Google News', '') : '',
       contentSnippet: undefined,
+      comments: undefined,
       guid: undefined,
+      url: `/article/${data[i]?.title?.split(" ")?.join("-")}`,
       link: `${URL}/article/${data[i]?.title.split(" ")?.join("-")}`
   }
   }
@@ -81,6 +84,7 @@ const search = async (query, { n = 100 }={}) => {
         content: undefined,
         contentSnippet: undefined,
         guid: undefined,
+        url: `/article/${data[i]?.title?.split(" ")?.join("-")}`,
         link: `${URL}/article/${data[i]?.title?.split(" ")?.join("-")}`
     }
     }
