@@ -6,10 +6,11 @@ const { JSDOM } = require('jsdom');
 const { Readability } = require('@mozilla/readability');
 const cache = require('./cache.js');
 const createDOMPurify = require('dompurify');
-
+ 
 const TOPICS_RSS    = 'https://news.google.com/news/rss/headlines/section/topic/';
 const SEARCH_RSS    = 'https://news.google.com/rss/search?q=';
-const TOPICS = [];
+const CUSTOM_RSS    = [];
+const TOPICS = ['TECHNOLOGY', 'ENTERTAINMENT', 'SPORTS', 'SCIENCE'];
 const URL = ``;
 
 const contentFilter = (link, contentData) => {
@@ -28,33 +29,45 @@ const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const topic = async (doCache = true, topicName, {n = 100} = {}) => {
   var allData = [];
+  var data = [];
   var topics = TOPICS;
   if(topicName && !TOPICS.includes(topicName))return [];
   if(topicName) topics = [`${topicName}`];
    for(tName in topics) {
+    try {
     const url = TOPICS_RSS + `${topicName ? topicName : topics[tName]}`;
-    var data = (await getRss(url)).items.slice(0, Math.max(0, n));
-    for(i in data) {
-      cache.set(`${data[i]?.guid}`, `${data[i].link}`);
-      data[i] = {
-        ...data[i],
-        content: undefined,
-        contentSnippet: undefined,
-        guid: undefined,
-        link: `${URL}/article/${data[i]?.guid}`
-    }
-    }
+    data = data.concat((await getRss(url)).items.slice(0, Math.max(0, n)));
+  }catch(e) {}
+}
+if(Array.isArray(CUSTOM_RSS) && CUSTOM_RSS.length > 0) {
+  for(i in CUSTOM_RSS) {
+    try {
+    var customData = (await getRss(CUSTOM_RSS[i])).items.slice(0, Math.max(0, n));
+    data = data.concat(customData);
+    }catch(e) {}
+  }
+}
+  for(i in data) {
+    cache.set(`${data[i]?.title?.split(" ").join("-")}`, `${data[i].link}`);
+    data[i] = {
+      ...data[i],
+      content: undefined,
+      contentSnippet: undefined,
+      guid: undefined,
+      link: `${URL}/article/${data[i]?.title.split(" ")?.join("-")}`
+  }
+  }
+  
     if(data && doCache) {
       for(i in data) {
         try {
         await wait(5000);
         var contentRaw = await axios.get(data[i].link);
-        cache.set(`${data[i].guid}`, `${contentFilter(data[i], contentRaw.data)}`);
+        cache.set(`${data[i]?.title?.split(" ").join("-")}`, `${contentFilter(data[i], contentRaw.data)}`);
         }catch(e) {}
       }
     }
     allData = allData.concat(data);
-  };
   return allData;
 };
 
@@ -62,13 +75,13 @@ const search = async (query, { n = 100 }={}) => {
     const url = SEARCH_RSS + encodeURIComponent(query);
     var data = (await getRss(url)).items.slice(0, Math.max(0, n));
     for(i in data) {
-      cache.set(`${data[i]?.guid}`, `${data[i]?.link}`);
+      cache.set(`${data[i]?.title?.split(" ").join("-")}`, `${data[i]?.link}`);
       data[i] = {
         ...data[i],
         content: undefined,
         contentSnippet: undefined,
         guid: undefined,
-        link: `${URL}/article/${data[i]?.guid}`
+        link: `${URL}/article/${data[i]?.title?.split(" ")?.join("-")}`
     }
     }
     if(data && doCache) {
@@ -76,7 +89,7 @@ const search = async (query, { n = 100 }={}) => {
         try {
         await wait(5000);
         var contentRaw = await axios.get(data[i].link);
-        cache.set(`${data[i].guid}`, `${contentFilter(data[i], contentRaw.data)}`);
+        cache.set(`${data[i].title?.split(" ").join("-")}`, `${contentFilter(data[i], contentRaw.data)}`);
         }catch(e) {}
       }
     }
