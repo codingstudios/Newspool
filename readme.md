@@ -24,6 +24,9 @@ A unique news application written in javascript created by the Coding Studios.
 
 ## [Showcase](./showcase)
 
+## Contact
+> Please join our [Discord Server](https://discord.gg/Ty6nM6y3Ug) and create a thread in #support to contact us !
+
 ## Datas & Contents are from
 - [newsapi.org](https://newsapi.org)
 - [Google News](https://news.google.com)
