@@ -38,4 +38,4 @@ A unique news application written in javascript created by the Coding Studios.
 > Please credit this repository and the authors if you plan to use any of this project's code
 
 ## Contribute 
-Feel free to make a Pull Request with well described changes / functions. 
+Feel free to make a Pull Request with well described changes / functions. Check out [ideas](./showcase/ideas.md) if you don't know what to contribute, as well as reporting bugs !!
