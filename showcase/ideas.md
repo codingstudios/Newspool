@@ -6,8 +6,8 @@
 - Voice Over - Text to Speech (Reason: May not work on some browsers)
   - You can actually add the function by yourself:
     ```js
-speechSynthesis.speak(
-  new SpeechSynthesisUtterance(text.replace(/\s/g, " "))
-)
+      speechSynthesis.speak(
+        new SpeechSynthesisUtterance(text.replace(/\s/g, " "))
+      )
     ```
     
