@@ -20,6 +20,7 @@ app.get('/article/:id', async (req, res) => {
     })
     res.render('content', {
         article,
+        description: article.length > 200 ? `${article.substring(0, 200).split(`"`).join("'")}...` : article.split(`"`).join("'"),
         title: req?.params?.id.split("-").join(" ")
     });
 }catch(e) {
@@ -28,4 +29,5 @@ app.get('/article/:id', async (req, res) => {
     })
 } 
 })
+
 app.listen(3000);
