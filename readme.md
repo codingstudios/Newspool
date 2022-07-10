@@ -2,6 +2,7 @@
 A unique news application written in javascript created by the Coding Studios.
 
 **View [Live Demo](https://newspool.js.org)**
+**Check Out The [Discord Bot](https://discord.com/api/oauth2/authorize?client_id=995632124499607586&scope=applications.commands)**
 
 ## About
 - **Scraper** - Scrapes API content and filter the datas
