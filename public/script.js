@@ -8,7 +8,7 @@ var pageNumber = new URLSearchParams(window.location.search).get("page");
 var version = new URLSearchParams(window.location.search).get("v");
 
 if(!pageNumber || !Number(pageNumber)) pageNumber = 1;
-if(!version || !Number(version)) version = 2;
+if(!version || !Number(version)) version = 1;
 fetch(`/v${version}/articles?page=${pageNumber}`).then(res => res.json()).then(data => {
     if(!Array.isArray(data.articles))return;
     loading.classList.add('hidden');
@@ -25,7 +25,9 @@ fetch(`/v${version}/articles?page=${pageNumber}`).then(res => res.json()).then(d
         title.textContent = `${article.title}`
         element.append(title);
         const description = document.createElement('p');
-        description.textContent = `${article.description}`
+        description.textContent = `${article.description}
+         
+        ${article?.isoDate || article?.publishedAt ? `(${new Intl.DateTimeFormat(navigator.language, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}).format(new Date(article?.publishedAt ? article?.publishedAt : article?.isoDate))})` : ''}`
         element.append(description);
         DOM.append(element)
     })
@@ -33,7 +35,7 @@ fetch(`/v${version}/articles?page=${pageNumber}`).then(res => res.json()).then(d
     currentPage.classList.add("page");
     currentPage.textContent = `Page ${pageNumber} of ${totalPages}`;
     document.body.append(currentPage);
-}, 300);
+}, 500);
 })
 document.getElementById("prev").onclick = () => {
     if(pageNumber == 1)return;
@@ -45,4 +47,3 @@ document.getElementById("next").onclick = () => {
     window.location.search = `?page=${Number(pageNumber)+1}${version > 1 ? `&v=${version}` : ''}`;
 }
 }
-
