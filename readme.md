@@ -23,6 +23,10 @@ A unique news application written in javascript created by the Coding Studios.
   - `/topic` - Get news by topic
   - `/articles` - Articles (Grouped into 10)
   - `/article/{id}` - Get an article content by ID
+- `/v3` - **Custom News** (Beta)
+  - `/articles` - Articles (Grouped into 10)
+  - `/article/{id}` - Get an article content by ID
+  - `/{id}/articles` - Articles on a specific news (Grouped into 10)
 
 ## [Showcase](./showcase)
 
